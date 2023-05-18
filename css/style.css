@@ -1,0 +1,148 @@
+
+body, html {
+    background: rgb(17,4,80);
+    background: linear-gradient(90deg, rgba(17,4,80,1) 0%, rgba(26,26,26,1) 50%, rgba(17,4,80,1) 100%);
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.mensajeBienvenida{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.logo-cajero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: auto;
+}
+
+h1 {
+color: white;
+}
+
+h2 {
+    color: white;
+}
+
+.usuarios {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.boton {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 300px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.ContenedorUsuario {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.foto-boton {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: solid gray 1.5px;
+}
+
+.contenedor-botones {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+}
+
+.botones-izquierda,
+.botones-derecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton-cajero {
+    align-items: center;
+    height: 15vh;
+    width: 150%;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 15px 15px 15px 15px ; /* Ajusta el margen horizontal según tus preferencias */
+    border: none;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.menu-consulta {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.saldo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Saldo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+.boton-esquina {
+    align-items: center;
+    width: 20%;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 15px 15px 15px 0px ; /* Ajusta el margen horizontal según tus preferencias */
+    border: none;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+
+.menu-consulta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;}
+
+.boton-izquierda {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .boton-derecha {
+    grid-column: 2;
+    grid-row: 2;
+  }

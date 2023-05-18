@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero DEV-F</title>
+    <!--Incluir stylesheet-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--Incluir Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!--Incluir fuente-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!--Mensaje de bienvenida-->
+    <div id="bienvenida" class="mensajeBienvenida">
+        <div class="logo-cajero">
+            <img  src="imagenes/logo.jpg" alt="logo-cajero">
+        </div>
+            <h1 mt="4px">Bienvenido al sistema Bancario DEV.F</h1>
+    </div>
+
+
+    <!--Menu del personas -->
+    <div id="menuUsuarios"  class="usuarios">
+        <div class="ContenedorUsiuarios">
+            <h2>Seleccione Usuario</h2>
+        </div>
+        <button type="button" class="boton list-group-item list-group-item-action" onclick=pedirNIP("Mali")>
+            <span class="texto-boton">Mali</span>
+            <img src="imagenes/mali.png" alt="foto-perfil-mali" class="foto-boton" >
+        </button>
+        <button type="button" class="boton list-group-item list-group-item-action" onclick=pedirNIP("Gera")>
+            <span class="texto-boton">Gera</span>
+            <img src="imagenes/gera.png" alt="foto-perfil-gera" class="foto-boton">
+        </button>
+        <button type="button" class="boton list-group-item list-group-item-action" onclick=pedirNIP("Maui")>
+            <span class="texto-boton mb=5px">Maui</span>
+            <img src="imagenes/maui.png" alt="foto-perfil-maui" class="foto-boton">
+        </button>
+    </div>
+
+    <p id="mensaje"></p>
+
+    <!--Menu del cajero-->
+    <div class="contenedor-botones" style="display: none;">
+        <div class="botones-izquierda">
+        <button class="boton-cajero" onclick="mostrarMensaje('Recarga', this)">Recarga</button>
+        <button class="boton-cajero" onclick="mostrarMensaje('Pago', this)">Pago</button>
+        <button class="boton-cajero" onclick="mostrarMensaje('Transacciones', this)">Transacciones</button>
+        <button class="boton-cajero" onclick="mostrarMensaje('Otro', this)">Otro</button>
+        </div>
+        <div class="botones-derecha">
+        <button class="boton-cajero" onclick="mostrarMensaje('Retiro', this)">Retiro</button>
+        <button class="boton-cajero" onclick="mostrarMensaje('Consulta', this)">Consulta</button>
+        <button class="boton-cajero" onclick="mostrarMensaje('Transferencia', this)">Transferencia</button>
+        <button class="boton-cajero" onclick="mostrarMensaje('Depósitos', this)">Depositar</button>
+        </div>
+    </div>
+
+
+<!-- Menu de consulta -->
+<div class="menu-consulta" id="menuConsulta" style="display: none;">
+    <div class="saldo-container">
+        <h2> Tu saldo actual es:</h2>
+        <p id="saldo" class="Saldo"></p>
+    </div>
+    <div class="regresar">
+        <button id="botonRegresar" class="boton-esquina" > </button>
+    </div>
+    <div class="salir">
+        <button class="boton-esquina" onclick="salir()">Salir</button>
+    </div>
+</div>
+
+
+<!--Menu de deposito-->
+<div class="menu-deposito" id="menuDeposito" style="display: none;">
+    <div class="saldo-container">
+        <h2>Agregar saldo</h2>
+        <input type="number" id="cantidadAgregar" placeholder="Ingrese la cantidad">
+        <button class="boton-esquina" onclick="agregarSaldo()">Agregar</button>
+    </div>
+    <div class="saldo-container">
+        <h2>Tu saldo actual es:</h2>
+        <p id="saldo" class="Saldo"></p>
+        <p id="saldoDespuesDeposito" class="Saldo" style="display: none;"></p> <!-- Nuevo elemento para mostrar el saldo después del depósito -->
+    </div>
+    <div class="regresar">
+        <button class="boton-esquina" onclick="regresarMenu()">Volver</button>
+    </div>
+    <div class="salir">
+        <button class="boton-esquina" onclick="salir()">Salir</button>
+    </div>
+</div>
+
+
+<!--Menu de retiro-->
+<div class="menu-retiro" id="menuRetiro" style="display: none;">
+    <div class="saldo-container">
+        <h2>Retirar saldo</h2>
+        <input type="number" id="cantidadRetirar" placeholder="Ingrese la cantidad  retirar">
+        <button class="boton-esquina" onclick="retirarSaldo()">Retirar</button>
+    </div>
+    <div class="saldo-container">
+        <h2>Tu saldo actual es:</h2>
+        <p id="saldo" class="Saldo"></p>
+        <p id="saldoDespuesRetiro" class="Saldo" style="display: none;"></p> <!-- Nuevo elemento para mostrar el saldo después del depósito -->
+    </div>
+    <div class="regresar">
+        <button class="boton-esquina" onclick="regresarMenu()">Volver</button>
+    </div>
+    <div class="salir">
+        <button class="boton-esquina" onclick="salir()">Salir</button>
+    </div>
+</div>
+
+<!--Menu Transferir-->
+<div class="menu-transferir" id="menuTransferir" style="display: none;">
+    <div class="saldo-container">
+        <h2>Sald a tranferir</h2>
+        <input type="number" id="cantidadRetirar" placeholder="Ingrese la cantidad  retirar">
+        <button class="boton-esquina" onclick="retirarSaldo()">Retirar</button>
+    </div>
+    <div class="saldo-container">
+        <h2>Tu saldo actual es:</h2>
+        <p id="saldo" class="Saldo"></p>
+        <p id="saldoDespuesRetiro" class="Saldo" style="display: none;"></p> <!-- Nuevo elemento para mostrar el saldo después del depósito -->
+    </div>
+    <div class="regresar">
+        <button class="boton-esquina" onclick="regresarMenu()">Volver</button>
+    </div>
+    <div class="salir">
+        <button class="boton-esquina" onclick="salir()">Salir</button>
+    </div>
+</div>
+
+
+
+    <!--Incluir JS-->
+    <script src="js/main.js"></script>
+    <!--Incluir Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
